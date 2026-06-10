@@ -1,7 +1,14 @@
 package com.petland.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+
+@Embeddable
 public class Endereco {
+    @Column(length = 50)
     private String logradouro;
+
+    @Column(length = 6)
     private String numero;
 
     public String getLogradouro() {
