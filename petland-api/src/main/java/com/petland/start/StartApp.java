@@ -1,33 +1,34 @@
 package com.petland.start;
 
-import com.petland.model.Cadastro;
-import com.petland.model.Endereco;
-import com.petland.model.Perfil;
+import com.petland.model.*;
+import com.petland.repository.AnimalRepository;
 import com.petland.repository.CadastroRepository;
+import com.petland.repository.ProdutoServicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
 
 @Component
 public class StartApp implements ApplicationRunner {
     @Autowired
     private CadastroRepository cadastroRepository;
 
+    @Autowired
+    private AnimalRepository animalRepository;
+
+    @Autowired
+    ProdutoServicoRepository produtoServicoRepository;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        Cadastro felipe = new Cadastro();
-        felipe.setNome("Felipe Pagotti");
+        ProdutoServico servico = new ProdutoServico();
+        servico.setNome("Tosa");
+        servico.setServico(true);
+        servico.setValor(70.0);
 
-        Perfil perfil = new Perfil();
-        perfil.setCliente(true);
-        felipe.setPerfil(perfil);
-
-        Endereco endereco = new Endereco();
-        endereco.setLogradouro("Rua das Flores");
-        endereco.setNumero("1234");
-        felipe.setEndereco(endereco);
-
-        cadastroRepository.save(felipe);
+        produtoServicoRepository.save(servico);
     }
 }
