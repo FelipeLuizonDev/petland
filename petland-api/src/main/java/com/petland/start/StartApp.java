@@ -24,11 +24,13 @@ public class StartApp implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+        /*
         ProdutoServico servico = new ProdutoServico();
         servico.setNome("Tosa");
         servico.setServico(true);
         servico.setValor(70.0);
 
         produtoServicoRepository.save(servico);
+         */
     }
 }
