@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:17
+    container_name: petland-postgres
+
+    environment:
+      POSTGRES_DB: petland
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres@123
+
+    ports:
+      - "5433:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
