@@ -1,6 +1,7 @@
 package com.petland.service;
 
-import com.petland.model.dto.AnimalResponse;
+import com.petland.model.dto.AnimalRequestDTO;
+import com.petland.model.dto.AnimalResponseDTO;
 import com.petland.model.entity.AnimalEntity;
 import com.petland.repository.AnimalRepository;
 import org.springframework.beans.BeanUtils;
@@ -15,16 +16,35 @@ public class AnimalService {
     @Autowired
     private AnimalRepository animalRepository;
 
-    public List<AnimalResponse> listar() {
+    public List<AnimalResponseDTO> listar() {
         List<AnimalEntity> entities = animalRepository.findAll();
-        List<AnimalResponse> responses = new ArrayList<>();
+        List<AnimalResponseDTO> responses = new ArrayList<>();
         for(AnimalEntity e: entities) {
-            AnimalResponse res = new AnimalResponse();
+            AnimalResponseDTO res = new AnimalResponseDTO();
             res.setId(e.getId());
             BeanUtils.copyProperties(e, res);
             responses.add(res);
         }
 
         return responses;
+    }
+
+    public Integer gravar(AnimalRequestDTO requisicao) {
+        AnimalEntity entity = new AnimalEntity();
+        BeanUtils.copyProperties(requisicao, entity);
+        return animalRepository.save(entity).getId();
+    }
+
+    public Integer alterar(Integer id, AnimalRequestDTO requisicao) {
+        AnimalEntity entity = animalRepository.findById(id).orElse(null);
+        if(entity != null) {
+            BeanUtils.copyProperties(requisicao, entity);
+            return animalRepository.save(entity).getId();
+        }
+        return null;
+    }
+
+    public void excluir(Integer id) {
+        animalRepository.deleteById(id);
     }
 }

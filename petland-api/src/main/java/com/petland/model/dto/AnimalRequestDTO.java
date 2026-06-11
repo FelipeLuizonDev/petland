@@ -6,8 +6,7 @@ import lombok.Data;
 import java.time.LocalDate;
 
 @Data
-public class AnimalResponse {
-    private Integer id;
+public class AnimalRequestDTO {
     private String nome;
     private LocalDate aniversario;
     private AnimalEspecie especie;
