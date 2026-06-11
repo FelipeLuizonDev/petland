@@ -1,7 +1,7 @@
 package com.petland.service;
 
 import com.petland.model.dto.AnimalRequestDTO;
-import com.petland.model.dto.AnimalResponseDTO;
+import com.petland.model.dto.CadastroResponseDTO;
 import com.petland.model.entity.AnimalEntity;
 import com.petland.repository.AnimalRepository;
 import org.springframework.beans.BeanUtils;
@@ -16,11 +16,11 @@ public class AnimalService {
     @Autowired
     private AnimalRepository animalRepository;
 
-    public List<AnimalResponseDTO> listar() {
+    public List<CadastroResponseDTO> listar() {
         List<AnimalEntity> entities = animalRepository.findAll();
-        List<AnimalResponseDTO> responses = new ArrayList<>();
+        List<CadastroResponseDTO> responses = new ArrayList<>();
         for(AnimalEntity e: entities) {
-            AnimalResponseDTO res = new AnimalResponseDTO();
+            CadastroResponseDTO res = new CadastroResponseDTO();
             res.setId(e.getId());
             BeanUtils.copyProperties(e, res);
             responses.add(res);

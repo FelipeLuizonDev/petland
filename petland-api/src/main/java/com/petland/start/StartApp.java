@@ -1,20 +1,17 @@
 package com.petland.start;
 
-import com.petland.model.*;
 import com.petland.repository.AnimalRepository;
-import com.petland.repository.CadastroRepository;
+import com.petland.repository.ClienteRepository;
 import com.petland.repository.ProdutoServicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
-
 @Component
 public class StartApp implements ApplicationRunner {
     @Autowired
-    private CadastroRepository cadastroRepository;
+    private ClienteRepository clienteRepository;
 
     @Autowired
     private AnimalRepository animalRepository;

@@ -1,7 +1,7 @@
 package com.petland.controller;
 
 import com.petland.model.dto.AnimalRequestDTO;
-import com.petland.model.dto.AnimalResponseDTO;
+import com.petland.model.dto.CadastroResponseDTO;
 import com.petland.service.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +15,7 @@ public class AnimalController {
     private AnimalService animalService;
 
     @GetMapping()
-    public List<AnimalResponseDTO> get() {
+    public List<CadastroResponseDTO> get() {
         return animalService.listar();
     }
 
