@@ -1,0 +1,12 @@
+package com.petland.cadastro.model.dto;
+
+import com.petland.cadastro.model.Endereco;
+import com.petland.cadastro.model.Perfil;
+import lombok.Data;
+
+@Data
+public class ClienteRequestDTO {
+    private String nome;
+    private Perfil perfil;
+    private Endereco endereco;
+}

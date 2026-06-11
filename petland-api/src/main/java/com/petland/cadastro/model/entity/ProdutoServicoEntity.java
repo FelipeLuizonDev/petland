@@ -1,0 +1,20 @@
+package com.petland.cadastro.model.entity;
+
+import jakarta.persistence.*;
+import lombok.Data;
+
+@Entity
+@Table(name = "produto_servico")
+@Data
+public class ProdutoServicoEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Setter(AccessLevel.NONE)
+    private Integer id;
+
+    @Column(length = 50, nullable = false)
+    private String nome;
+
+    private Double valor;
+    private boolean servico;
+}
