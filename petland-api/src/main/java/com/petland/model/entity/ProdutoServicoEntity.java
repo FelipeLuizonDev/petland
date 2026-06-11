@@ -1,14 +1,12 @@
-package com.petland.model;
+package com.petland.model.entity;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
 import lombok.Data;
-import lombok.Setter;
 
 @Entity
 @Table(name = "produto_servico")
 @Data
-public class ProdutoServico {
+public class ProdutoServicoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    @Setter(AccessLevel.NONE)

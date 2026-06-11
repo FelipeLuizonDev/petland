@@ -1,7 +1,5 @@
 package com.petland.service;
 
-import com.petland.model.dto.AnimalRequestDTO;
-import com.petland.model.dto.CadastroResponseDTO;
 import com.petland.model.dto.ClienteRequestDTO;
 import com.petland.model.dto.ClienteResponseDTO;
 import com.petland.model.entity.ClienteEntity;

@@ -1,8 +1,8 @@
 package com.petland.controller;
 
-import com.petland.model.ProdutoServico;
-import com.petland.repository.ProdutoServicoRepository;
-import jakarta.persistence.criteria.CriteriaBuilder;
+import com.petland.model.dto.ProdutoServicoRequestDTO;
+import com.petland.model.dto.ProdutoServicoResponseDTO;
+import com.petland.service.ProdutoServicoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,28 +12,25 @@ import java.util.List;
 @RequestMapping("/produtos")
 public class ProdutoServicoController {
     @Autowired
-    private ProdutoServicoRepository produtoServicoRepository;
+    private ProdutoServicoService produtoServicoService;
 
     @GetMapping()
-    public List<ProdutoServico> listar() {
-        return produtoServicoRepository.findAll();
+    public List<ProdutoServicoResponseDTO> get() {
+        return produtoServicoService.listar();
     }
 
     @PostMapping()
-    public Integer gravar(@RequestBody ProdutoServico requisicao) {
-        produtoServicoRepository.save(requisicao);
-        return requisicao.getId();
+    public Integer post(@RequestBody ProdutoServicoRequestDTO requisicao) {
+        return produtoServicoService.gravar(requisicao);
     }
 
     @PutMapping("/{id}")
-    public Integer alterar(@PathVariable("id")  Integer id, @RequestBody ProdutoServico requisicao) {
-        requisicao.setId(id);
-        produtoServicoRepository.save(requisicao);
-        return requisicao.getId();
+    public Integer put(@PathVariable("id") Integer id, @RequestBody ProdutoServicoRequestDTO requisicao) {
+        return produtoServicoService.alterar(id, requisicao);
     }
 
     @DeleteMapping("/{id}")
-    public void deletar(@PathVariable("id") Integer id) {
-        produtoServicoRepository.deleteById(id);
+    public void delete(@PathVariable("id") Integer id) {
+        produtoServicoService.excluir(id);
     }
 }
